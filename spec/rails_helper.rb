@@ -35,9 +35,12 @@ end
 
 I18n.locale = "en"
 
+Rails.root.glob('spec/support/**/*.rb').sort_by(&:to_s).each { |f| require f }
+
 RSpec.configure do |config|
 
   I18n.locale = "en"
+  config.include SignInSupport
 
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_paths = [
